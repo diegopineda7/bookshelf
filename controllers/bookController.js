@@ -1,25 +1,20 @@
 const Book = require('../models/Book')
 
-const getBooks = async (req, res) => {
-  const books = await Book.find().lean().exec()
-  res.status(200).send({ books })
-}
-
 const saveBook = async (req, res) => {
   try {
     const {
       userEmail,
       name,
-      author,
-      lastPageRead
+      author
     } = req.body
 
     const book = Book({
       userEmail,
       name,
       author,
-      lastPageRead
+      lastPageRead: 0
     })
+
     // const { filename } = req.file
     // book.setPdfUrl(filename)
 
@@ -32,6 +27,5 @@ const saveBook = async (req, res) => {
 }
 
 module.exports = {
-  getBooks,
   saveBook
 }
