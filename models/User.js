@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { appConfig } = require('../config')
 
 const Schema = mongoose.Schema
 const UserSchema = Schema({
@@ -9,5 +10,13 @@ const UserSchema = Schema({
 }, {
   timestamps: true
 })
+
+UserSchema.methods.setImgUrl = function (filename) {
+  const { host, port } = appConfig
+  if (process.env.NODE_ENV === 'production')
+    this.imgUrl = `${host}/profile/${filename}`
+  else
+    this.imgUrl = `${host}:${port}/profile/${filename}`
+}
 
 module.exports = mongoose.model('Users', UserSchema)
