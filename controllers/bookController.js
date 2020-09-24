@@ -15,8 +15,8 @@ const saveBook = async (req, res) => {
       lastPageRead: 0
     })
 
-    // const { filename } = req.file
-    // book.setPdfUrl(filename)
+    const { filename } = req.file
+    book.setPdfUrl(filename)
 
     const bookSaved = await book.save()
 

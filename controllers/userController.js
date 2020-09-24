@@ -27,10 +27,10 @@ const signUpUser = async (req, res) => {
       name
     })
 
-    // if (req.file) {
-    // const { filename } = req.file
-    // user.setImgUrl(filename)
-    // }
+    if (req.file) {
+      const { filename } = req.file
+      user.setImgUrl(filename)
+    }
 
     const newUser = await user.save()
 

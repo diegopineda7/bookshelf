@@ -12,7 +12,7 @@ const BookSchema = Schema({
   timestamps: true
 })
 
-UserSchema.methods.setPdfUrl = function (filename) {
+BookSchema.methods.setPdfUrl = function (filename) {
   const { host, port } = appConfig
   if (process.env.NODE_ENV === 'production')
     this.pdfUrl = `${host}/docs/${filename}`
