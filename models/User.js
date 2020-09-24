@@ -14,9 +14,9 @@ const UserSchema = Schema({
 UserSchema.methods.setImgUrl = function (filename) {
   const { host, port } = appConfig
   if (process.env.NODE_ENV === 'production')
-    this.imgUrl = `${host}/profile/${filename}`
+    this.imgUrl = `${host}/profiles/${filename}`
   else
-    this.imgUrl = `${host}:${port}/profile/${filename}`
+    this.imgUrl = `${host}:${port}/profiles/${filename}`
 }
 
 module.exports = mongoose.model('Users', UserSchema)
