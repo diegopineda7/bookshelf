@@ -12,8 +12,8 @@ app.use(bodyParser.json())
 app.use('/user', userRoutes)
 app.use('/book', bookRoutes)
 
-app.use('/profiles', express.static(`${__dirname}/storage/pdf`))
-app.use('/docs', express.static(`${__dirname}/storage/img`))
+app.use('/profiles', express.static(`${__dirname}/storage/img`))
+app.use('/docs', express.static(`${__dirname}/storage/pdf`))
 
 // TODO: set React app folder 
 if (process.env.NODE_ENV === 'production') {
