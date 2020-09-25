@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { signUpUser } from '../services';
 
 export default function SignUp() {
   const [userInfo, setUserInfo] = useState({
@@ -14,9 +15,9 @@ export default function SignUp() {
     setUserInfo({ ...userInfo, [name]: value })
   }
 
-  const signUpUser = e => {
+  const _signUpUser = e => {
     e.preventDefault();
-    // TODO:
+    signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
   }
 
   return (
@@ -25,7 +26,7 @@ export default function SignUp() {
         <h1>Sign Up form</h1>
         X
       </div>
-      <form onSubmit={signUpUser} className='modal__form'>
+      <form onSubmit={_signUpUser} className='modal__form'>
         <div className='form__item'>
           <label className='form__label'>Email *</label>
           <input
