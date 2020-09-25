@@ -2,18 +2,22 @@ import axios from 'axios'
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-// export const getUserBooks = async () => {
-//   try {
-//     const response = await axios({
-//       url: `${baseUrl}/products`,
-//       method: 'GET'
-//     })
+export const getUserBooks = async (userInfo) => {
+  const userData = new FormData()
+  userData.append('userEmail', userInfo.userEmail)
 
-//     return response
-//   } catch (e) {
-//     console.error(e)
-//   }
-// }
+  try {
+    const response = await axios({
+      url: `${baseUrl}/user/books`,
+      method: 'GET',
+      data: userData
+    })
+
+    return response
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 export const signUpUser = async (userInfo) => {
   const userData = new FormData()
