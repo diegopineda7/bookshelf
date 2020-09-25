@@ -22,7 +22,7 @@ export const getUserBooks = async userInfo => {
 export const signUpUser = async userInfo => {
   const userData = new FormData()
   userData.append('email', userInfo.email)
-  userData.append('password', userInfo.pasword)
+  userData.append('password', userInfo.password)
   userData.append('name', userInfo.name)
   userData.append('photo', userInfo.photo)
 

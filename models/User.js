@@ -4,7 +4,7 @@ const { appConfig } = require('../config')
 const Schema = mongoose.Schema
 const UserSchema = Schema({
   email: String,
-  pasword: String,
+  password: String,
   name: String,
   imgUrl: String
 }, {
