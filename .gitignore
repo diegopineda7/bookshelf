@@ -17,6 +17,7 @@
 .env.test.local
 .env.production.local
 
+# storage
 /storage/img/*
 /storage/pdf/*
 

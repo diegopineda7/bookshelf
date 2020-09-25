@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-export const getUserBooks = async (userInfo) => {
+export const getUserBooks = async userInfo => {
   const userData = new FormData()
   userData.append('userEmail', userInfo.userEmail)
 
@@ -19,7 +19,7 @@ export const getUserBooks = async (userInfo) => {
   }
 }
 
-export const signUpUser = async (userInfo) => {
+export const signUpUser = async userInfo => {
   const userData = new FormData()
   userData.append('email', userInfo.email)
   userData.append('password', userInfo.pasword)

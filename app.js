@@ -15,9 +15,8 @@ app.use('/book', bookRoutes)
 app.use('/profiles', express.static(`${__dirname}/storage/img`))
 app.use('/docs', express.static(`${__dirname}/storage/pdf`))
 
-// TODO: set React app folder 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('./frontend/build'))
+  app.use(express.static('./client/build'))
 }
 
 module.exports = app
