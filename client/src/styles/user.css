@@ -11,22 +11,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.modal {
+.modal__overlay {
+  position: fixed;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  position: absolute;
+  width: 75%;
   height: fit-content;
-  padding: 25px 0;
-  border: 1px solid black;
+  padding: 20px 0;
+  background-color: red;
+  border-radius: 25px;
 }
 
 .modal__header {
   width: 95%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .modal__form {
@@ -34,8 +44,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 25px;
+}
+
+.modal__close-button {
+  position: absolute;
+  right: 25px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 25px;
 }
 
 .form__item {

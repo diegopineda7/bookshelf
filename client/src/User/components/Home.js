@@ -25,7 +25,7 @@ export default function Home({ userEmail }) {
         isLoading
           ? 'Loading...'
           : books.length > 0
-            ? < BooksList />
+            ? <BooksList />
             : <h2>You don't have any books.</h2>
       }
     // TODO: Add new book Modal

@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
+import Modal from 'react-modal';
 import { signUpUser } from '../services';
 
-export default function SignUp() {
+Modal.setAppElement('#root')
+
+export default function SignUp({ modalOpen, setModalOpen }) {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -9,6 +12,8 @@ export default function SignUp() {
   })
 
   const inputFileRef = useRef()
+
+  const closeModal = () => setModalOpen(false)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -21,10 +26,15 @@ export default function SignUp() {
   }
 
   return (
-    <div className='modal'>
+    <Modal
+      isOpen={modalOpen}
+      onRequestClose={closeModal}
+      overlayClassName='modal__overlay'
+      className='modal__content'
+    >
       <div className='modal__header'>
         <h1>Sign Up form</h1>
-        X
+        <button onClick={closeModal} className='modal__close-button'>X</button>
       </div>
       <form onSubmit={_signUpUser} className='modal__form'>
         <div className='form__item'>
@@ -72,6 +82,6 @@ export default function SignUp() {
           <button type='submit' className='form__button'>Sign Up</button>
         </div>
       </form>
-    </div>
+    </Modal>
   )
 }
