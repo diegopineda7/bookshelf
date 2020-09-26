@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Addbook from '../../Book/components/AddBook'
+import AddbookModal from '../../Book/components/AddBookModal'
 import { getUserBooks } from '../services'
 import BooksList from './BooksList'
 
-export default function Home({ userEmail }) {
+export default function Bookshelf({ userEmail }) {
   const [isLoading, setIsLoading] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
   const [books, setBooks] = useState([])
@@ -27,12 +27,15 @@ export default function Home({ userEmail }) {
   return (
     <div>
       <h1>Bookshelf</h1>
+      <button className='bookshelf__button'>LOG OUT</button>
       {
         isLoading
-          ? 'Loading...'
-          : <>
-            <button onClick={openModal} >Add book</button>
-            <Addbook
+          ? <div className='loading'>
+            <h2>Loading your books...</h2>
+          </div>
+          : <div className='bookslist'>
+            <button onClick={openModal} className='bookshelf__button'>Add book</button>
+            <AddbookModal
               modalOpen={modalOpen}
               setModalOpen={setModalOpen}
             />
@@ -41,7 +44,7 @@ export default function Home({ userEmail }) {
                 ? <BooksList books={books} />
                 : <h2>You don't have any books.</h2>
             }
-          </>
+          </div>
       }
     </div>
   )

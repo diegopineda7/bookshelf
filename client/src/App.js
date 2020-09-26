@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './styles/book.css';
 import './styles/global.css';
 import './styles/user.css';
-import Home from './User/components/Home';
-import LogIn from './User/components/LogIn';
-import SignUp from './User/components/SignUp';
+import Bookshelf from './User/components/Bookshelf';
+import LogInModal from './User/components/LogInModal';
+import SignUpModal from './User/components/SignUpModal';
 
 function App() {
   const [user, setUser] = useState({})
@@ -16,20 +16,30 @@ function App() {
       {
         !user.email
           ? <>
-            <button onClick={() => setModalSignUpOpen(true)}>SIGN UP</button>
-            <button onClick={() => setModalLogInOpen(true)}>LOG IN</button>
-            <SignUp
+            <button
+              onClick={() => setModalSignUpOpen(true)}
+              className='home__button'
+            >
+              SIGN UP
+            </button>
+            <button
+              onClick={() => setModalLogInOpen(true)}
+              className='home__button'
+            >
+              LOG IN
+            </button>
+            <SignUpModal
               modalOpen={modalSignUpOpen}
               setModalOpen={setModalSignUpOpen}
               setUser={setUser}
             />
-            <LogIn
+            <LogInModal
               modalOpen={modalLogInOpen}
               setModalOpen={setModalLogInOpen}
               setUser={setUser}
             />
           </>
-          : <Home userEmail={user.email} />
+          : <Bookshelf userEmail={user.email} />
       }
     </div>
   )

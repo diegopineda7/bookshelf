@@ -11,6 +11,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ================ HOME ================ */
+
+.home__button {
+  padding: 15px;
+}
+
+/* ================ MODAL ================ */
+
 .modal__overlay {
   position: fixed;
   display: flex;
@@ -56,6 +64,8 @@ body {
   border: none;
   border-radius: 25px;
 }
+
+/* ================ FORM ================ */
 
 .form__item {
   width: 90%;
