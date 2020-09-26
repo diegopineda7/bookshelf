@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import './styles/user.css';
 import Home from './User/components/Home';
+import LogIn from './User/components/LogIn';
 import SignUp from './User/components/SignUp';
 
 function App() {
   const [user, setUser] = useState({})
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalSignUpOpen, setModalSignUpOpen] = useState(false)
+  const [modalLogInOpen, setModalLogInOpen] = useState(false)
 
   return (
     <div>
-      <button onClick={() => setModalOpen(true)}>OPEN MODAL</button>
+      <button onClick={() => setModalSignUpOpen(true)}>SIGN UP</button>
+      <button onClick={() => setModalLogInOpen(true)}>LOG IN</button>
       <SignUp
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
+        modalOpen={modalSignUpOpen}
+        setModalOpen={setModalSignUpOpen}
+        setUser={setUser}
+      />
+      <LogIn
+        modalOpen={modalLogInOpen}
+        setModalOpen={setModalLogInOpen}
         setUser={setUser}
       />
       {/* <Home userEmail={user.email} /> */}

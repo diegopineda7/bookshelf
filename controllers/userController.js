@@ -10,7 +10,7 @@ const getUserBooks = async (req, res) => {
 const logInUser = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email, password }).lean().exec()
-  res.status(201).send({ user })
+  res.status(200).send({ user })
 }
 
 const signUpUser = async (req, res) => {
