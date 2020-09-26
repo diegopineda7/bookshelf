@@ -7,7 +7,8 @@ const BookSchema = Schema({
   name: String,
   author: String,
   pdfUrl: String,
-  lastPageRead: Number
+  lastPageRead: Number,
+  quotes: Array
 }, {
   timestamps: true
 })

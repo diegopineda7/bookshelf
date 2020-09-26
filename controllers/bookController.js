@@ -12,7 +12,8 @@ const saveBook = async (req, res) => {
       userEmail,
       name,
       author,
-      lastPageRead: 0
+      lastPageRead: 0,
+      quotes: []
     })
 
     const { filename } = req.file
@@ -26,6 +27,25 @@ const saveBook = async (req, res) => {
   }
 }
 
+const saveQuote = async (req, res) => {
+  try {
+    const {
+      bookId,
+      quote
+    } = req.body
+
+    const book = await Book.findById(bookId)
+    book.quotes.push(quote)
+
+    const bookSaved = await book.save()
+
+    res.status(201).send({ bookSaved })
+  } catch (e) {
+    res.status(500).send({ error: e.message })
+  }
+}
+
 module.exports = {
-  saveBook
+  saveBook,
+  saveQuote
 }
