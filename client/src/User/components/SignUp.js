@@ -4,7 +4,7 @@ import { signUpUser } from '../services';
 
 Modal.setAppElement('#root')
 
-export default function SignUp({ modalOpen, setModalOpen }) {
+export default function SignUp({ modalOpen, setModalOpen, setUser }) {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -22,7 +22,8 @@ export default function SignUp({ modalOpen, setModalOpen }) {
 
   const _signUpUser = e => {
     e.preventDefault();
-    signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
+    const user = signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
+    setUser(user)
   }
 
   return (

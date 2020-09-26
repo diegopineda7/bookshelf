@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
-export const getUserBooks = async userInfo => {
+export const getUserBooks = async ({ userEmail }) => {
   const userData = new FormData()
-  userData.append('userEmail', userInfo.userEmail)
+  userData.append('userEmail', userEmail)
 
   try {
     const response = await axios({
       url: `${baseUrl}/user/books`,
-      method: 'GET',
+      method: 'POST',
       data: userData
     })
 
@@ -29,6 +29,24 @@ export const signUpUser = async userInfo => {
   try {
     const response = await axios({
       url: `${baseUrl}/user/signup`,
+      method: 'POST',
+      data: userData
+    })
+
+    return response
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+export const logInUser = async ({ email, password }) => {
+  const userData = new FormData()
+  userData.append('email', email)
+  userData.append('password', password)
+
+  try {
+    const response = await axios({
+      url: `${baseUrl}/user/login`,
       method: 'POST',
       data: userData
     })

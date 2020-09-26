@@ -4,7 +4,7 @@ const { signUpUser, logInUser, getUserBooks } = require('../controllers/userCont
 
 const api = express.Router()
 api.post('/signup', uploadImg.single('photo'), signUpUser)
-api.get('/login', logInUser)
-api.get('/books', getUserBooks)
+api.post('/login', uploadImg.none(), logInUser)
+api.post('/books', uploadImg.none(), getUserBooks)
 
 module.exports = api

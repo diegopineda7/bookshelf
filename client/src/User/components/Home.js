@@ -13,7 +13,7 @@ export default function Home({ userEmail }) {
   const loadBooks = async () => {
     const response = await getUserBooks({ userEmail })
     if (response !== undefined && response.status === 200) {
-      setBooks(response.data.books)
+      setBooks(response.data.userBooks)
       setIsLoading(false)
     }
   }
@@ -25,10 +25,10 @@ export default function Home({ userEmail }) {
         isLoading
           ? 'Loading...'
           : books.length > 0
-            ? <BooksList />
+            ? <BooksList books={books} />
             : <h2>You don't have any books.</h2>
+        // TODO: Add new book Modal
       }
-    // TODO: Add new book Modal
     </div>
   )
 }
