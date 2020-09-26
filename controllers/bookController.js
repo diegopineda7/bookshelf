@@ -34,18 +34,29 @@ const saveQuote = async (req, res) => {
       quote
     } = req.body
 
-    const book = await Book.findById(bookId)
-    book.quotes.push(quote)
+    const bookUpdated = await Book.findByIdAndUpdate(bookId, {
+      $push: {
+        quotes: quote
+      }
+    }, {
+      new: true
+    }).lean().exec()
 
-    const bookSaved = await book.save()
-
-    res.status(201).send({ bookSaved })
+    res.status(201).send({ bookUpdated })
   } catch (e) {
     res.status(500).send({ error: e.message })
   }
 }
 
+const getQuotes = async (req, res) => {
+  const { bookId } = req.body
+
+  const book = await Product.findById(bookId).lean().exec()
+  res.status(200).send({ quotes: book.quotes })
+}
+
 module.exports = {
   saveBook,
-  saveQuote
+  saveQuote,
+  getQuotes
 }
