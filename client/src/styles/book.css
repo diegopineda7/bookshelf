@@ -9,17 +9,27 @@
   right: 0;
 }
 
+.bookslist__button {
+  margin: 25px 0;
+  width: fit-content;
+}
+
 .bookslist {
-  width: 100%;
-  background-color: green;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 95%;
 }
 
 .books-list {
   display: grid;
-  grid-template-columns: auto auto;
-  gap: 15px;
+  width: 100%;
+  grid-template-columns: auto auto ;
+  gap: 20px;
 }
 
 .book {
-  background-color: red;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 15px;
 }

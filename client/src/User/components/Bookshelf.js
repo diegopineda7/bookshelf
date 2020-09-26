@@ -34,7 +34,7 @@ export default function Bookshelf({ userEmail }) {
             <h2>Loading your books...</h2>
           </div>
           : <div className='bookslist'>
-            <button onClick={openModal} className='bookshelf__button'>Add book</button>
+            <button onClick={openModal} className='bookslist__button'>Add book</button>
             <AddbookModal
               modalOpen={modalOpen}
               setModalOpen={setModalOpen}
