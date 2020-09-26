@@ -12,10 +12,10 @@ function App() {
   const [modalLogInOpen, setModalLogInOpen] = useState(false)
 
   return (
-    <div>
+    <div className='App'>
       {
         !user.email
-          ? <>
+          ? <div className='App'>
             <button
               onClick={() => setModalSignUpOpen(true)}
               className='home__button'
@@ -38,7 +38,7 @@ function App() {
               setModalOpen={setModalLogInOpen}
               setUser={setUser}
             />
-          </>
+          </div>
           : <Bookshelf userEmail={user.email} />
       }
     </div>

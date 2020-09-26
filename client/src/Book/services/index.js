@@ -4,8 +4,9 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 export const saveBook = async bookInfo => {
   const bookData = new FormData()
-  bookData.append('name', bookInfo.email)
-  bookData.append('author', bookInfo.password)
+  bookData.append('userEmail', bookInfo.userEmail)
+  bookData.append('name', bookInfo.name)
+  bookData.append('author', bookInfo.author)
   bookData.append('pdf', bookInfo.pdf)
 
   try {

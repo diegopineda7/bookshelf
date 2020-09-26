@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { saveBook } from '../services'
 
-export default function AddBook({ modalOpen, setModalOpen, setUser }) {
+export default function AddBook({ modalOpen, setModalOpen, userEmail, loadBooks }) {
   const [bookInfo, setBookInfo] = useState({
+    userEmail,
     name: '',
     author: ''
   })
@@ -17,10 +18,11 @@ export default function AddBook({ modalOpen, setModalOpen, setUser }) {
     setBookInfo({ ...bookInfo, [name]: value })
   }
 
-  const _saveBook = e => {
+  const _saveBook = async e => {
     e.preventDefault();
-    const user = saveBook({ ...bookInfo, pdf: inputFileRef.current.files[0] })
-    setUser(user)
+    closeModal()
+    await saveBook({ ...bookInfo, pdf: inputFileRef.current.files[0] })
+    await loadBooks()
   }
 
   return (
@@ -38,7 +40,7 @@ export default function AddBook({ modalOpen, setModalOpen, setUser }) {
         <div className='form__item'>
           <label className='form__label'>Name *</label>
           <input
-            type='name'
+            type='text'
             name='name'
             value={bookInfo.name}
             onChange={handleChange}
@@ -49,7 +51,7 @@ export default function AddBook({ modalOpen, setModalOpen, setUser }) {
         <div className='form__item'>
           <label className='form__label'>Author *</label>
           <input
-            type='author'
+            type='text'
             name='author'
             value={bookInfo.author}
             onChange={handleChange}

@@ -25,7 +25,7 @@ export default function Bookshelf({ userEmail }) {
   }
 
   return (
-    <div>
+    <div className='bookshelf'>
       <h1>Bookshelf</h1>
       <button className='bookshelf__button'>LOG OUT</button>
       {
@@ -38,6 +38,8 @@ export default function Bookshelf({ userEmail }) {
             <AddbookModal
               modalOpen={modalOpen}
               setModalOpen={setModalOpen}
+              userEmail={userEmail}
+              loadBooks={loadBooks}
             />
             {
               books.length > 0
