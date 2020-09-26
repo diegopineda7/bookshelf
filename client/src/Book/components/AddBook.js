@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
+import { saveBook } from '../services';
 
 export default function AddBook({ modalOpen, setModalOpen }) {
   const [bookInfo, setBookInfo] = useState({
@@ -18,7 +19,7 @@ export default function AddBook({ modalOpen, setModalOpen }) {
 
   const _saveBook = e => {
     e.preventDefault();
-    const user = signUpUser({ ...bookInfo, pdf: inputFileRef.current.files[0] })
+    const user = saveBook({ ...bookInfo, pdf: inputFileRef.current.files[0] })
     setUser(user)
   }
 
