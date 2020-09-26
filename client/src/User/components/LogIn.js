@@ -17,10 +17,10 @@ export default function LogIn({ modalOpen, setModalOpen, setUser }) {
     setUserInfo({ ...userInfo, [name]: value })
   }
 
-  const _logInUser = e => {
+  const _logInUser = async e => {
     e.preventDefault();
-    const user = logInUser({ ...userInfo })
-    setUser(user)
+    const response = await logInUser({ ...userInfo })
+    setUser(response.data.user)
   }
 
   return (

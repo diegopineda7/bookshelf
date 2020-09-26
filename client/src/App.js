@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       {
-        user === {}
+        !user.email
           ? <>
             <button onClick={() => setModalSignUpOpen(true)}>SIGN UP</button>
             <button onClick={() => setModalLogInOpen(true)}>LOG IN</button>
