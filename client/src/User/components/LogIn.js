@@ -35,7 +35,7 @@ export default function LogIn({ modalOpen, setModalOpen, setUser }) {
       </div>
       <form onSubmit={_logInUser} className='modal__form'>
         <div className='form__item'>
-          <label className='form__label'>Email *</label>
+          <label className='form__label'>Email</label>
           <input
             type='email'
             name='email'
@@ -46,7 +46,7 @@ export default function LogIn({ modalOpen, setModalOpen, setUser }) {
           />
         </div>
         <div className='form__item'>
-          <label className='form__label'>Password *</label>
+          <label className='form__label'>Password</label>
           <input
             type='password'
             name='password'
