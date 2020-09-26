@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import Modal from 'react-modal';
-import { saveBook } from '../services';
+import React, { useRef, useState } from 'react'
+import Modal from 'react-modal'
+import { saveBook } from '../services'
 
-export default function AddBook({ modalOpen, setModalOpen }) {
+export default function AddBook({ modalOpen, setModalOpen, setUser }) {
   const [bookInfo, setBookInfo] = useState({
     name: '',
     author: ''
@@ -40,7 +40,7 @@ export default function AddBook({ modalOpen, setModalOpen }) {
           <input
             type='name'
             name='name'
-            value={userInfo.name}
+            value={bookInfo.name}
             onChange={handleChange}
             className='form__input'
             required
@@ -51,7 +51,7 @@ export default function AddBook({ modalOpen, setModalOpen }) {
           <input
             type='author'
             name='author'
-            value={userInfo.author}
+            value={bookInfo.author}
             onChange={handleChange}
             className='form__input'
             required
