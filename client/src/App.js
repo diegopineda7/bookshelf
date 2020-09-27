@@ -11,6 +11,8 @@ function App() {
   const [modalSignUpOpen, setModalSignUpOpen] = useState(false)
   const [modalLogInOpen, setModalLogInOpen] = useState(false)
 
+  const showError = () => alert('Error de conexión! Intenta de nuevo')
+
   return (
     <div className='App'>
       {
@@ -32,14 +34,18 @@ function App() {
               modalOpen={modalSignUpOpen}
               setModalOpen={setModalSignUpOpen}
               setUser={setUser}
+              showError={showError}
             />
             <LogInModal
               modalOpen={modalLogInOpen}
               setModalOpen={setModalLogInOpen}
               setUser={setUser}
+              showError={showError}
             />
           </div>
-          : <Bookshelf userEmail={user.email} />
+          : <Bookshelf
+            userEmail={user.email}
+          />
       }
     </div>
   )

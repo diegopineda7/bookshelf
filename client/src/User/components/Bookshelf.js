@@ -20,10 +20,6 @@ export default function Bookshelf({ userEmail }) {
     }
   }
 
-  const openModal = () => {
-    setModalOpen(true)
-  }
-
   return (
     <div className='bookshelf'>
       <h1>Bookshelf</h1>
@@ -34,7 +30,12 @@ export default function Bookshelf({ userEmail }) {
             <h2>Loading your books...</h2>
           </div>
           : <div className='bookslist'>
-            <button onClick={openModal} className='bookslist__button'>Add book</button>
+            <button
+              onClick={() => setModalOpen(true)}
+              className='bookslist__button'
+            >
+              Add book
+            </button>
             <AddBookModal
               modalOpen={modalOpen}
               setModalOpen={setModalOpen}
@@ -42,9 +43,12 @@ export default function Bookshelf({ userEmail }) {
               loadBooks={loadBooks}
             />
             {
-              books.length > 0
-                ? <BooksList books={books} />
-                : <h2>You don't have any books.</h2>
+              !books.length
+                ? <h2>You don't have any books yet. Click the button to add your first book.</h2>
+                : <BooksList
+                  books={books}
+                  loadBooks={loadBooks}
+                />
             }
           </div>
       }

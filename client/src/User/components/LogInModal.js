@@ -4,10 +4,10 @@ import { logInUser } from '../services'
 
 Modal.setAppElement('#root')
 
-export default function LogIn({ modalOpen, setModalOpen, setUser }) {
+export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
   const [userInfo, setUserInfo] = useState({
-    email: '',
-    password: ''
+    email: 'pineda.diego798@gmail.com',
+    password: 'diego7'
   })
 
   const closeModal = () => setModalOpen(false)
@@ -21,7 +21,9 @@ export default function LogIn({ modalOpen, setModalOpen, setUser }) {
     e.preventDefault()
     closeModal()
     const response = await logInUser({ ...userInfo })
-    setUser(response.data.user)
+    if (response !== undefined && response.status === 200)
+      setUser(response.data.user)
+    else showError()
   }
 
   return (

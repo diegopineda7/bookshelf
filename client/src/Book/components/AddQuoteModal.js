@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { saveQuote } from '../services'
 
+Modal.setAppElement('#root')
+
 export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, loadBooks }) {
   const [quote, setQuote] = useState('')
 

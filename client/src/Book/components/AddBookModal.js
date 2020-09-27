@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { saveBook } from '../services'
 
+Modal.setAppElement('#root')
+
 export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadBooks }) {
   const [bookInfo, setBookInfo] = useState({
     userEmail,
