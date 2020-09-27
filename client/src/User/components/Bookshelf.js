@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AddbookModal from '../../Book/components/AddBookModal'
+import AddBookModal from '../../Book/components/AddBookModal'
 import { getUserBooks } from '../services'
 import BooksList from './BooksList'
 
@@ -35,7 +35,7 @@ export default function Bookshelf({ userEmail }) {
           </div>
           : <div className='bookslist'>
             <button onClick={openModal} className='bookslist__button'>Add book</button>
-            <AddbookModal
+            <AddBookModal
               modalOpen={modalOpen}
               setModalOpen={setModalOpen}
               userEmail={userEmail}
