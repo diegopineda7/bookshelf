@@ -13,6 +13,8 @@ function App() {
 
   const showError = () => alert('Error de conexión! Intenta de nuevo')
 
+  const logOut = () => setUser({})
+
   return (
     <div className='App'>
       {
@@ -45,6 +47,7 @@ function App() {
           </div>
           : <Bookshelf
             userEmail={user.email}
+            logOut={logOut}
           />
       }
     </div>

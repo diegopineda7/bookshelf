@@ -3,7 +3,7 @@ import AddBookModal from '../../Book/components/AddBookModal'
 import { getUserBooks } from '../services'
 import BooksList from './BooksList'
 
-export default function Bookshelf({ userEmail }) {
+export default function Bookshelf({ userEmail, logOut }) {
   const [isLoading, setIsLoading] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
   const [books, setBooks] = useState([])
@@ -23,7 +23,11 @@ export default function Bookshelf({ userEmail }) {
   return (
     <div className='bookshelf'>
       <h1>Bookshelf</h1>
-      <button className='bookshelf__button'>LOG OUT</button>
+      <button onClick={logOut}
+        className='bookshelf__button'
+      >
+        LOG OUT
+        </button>
       {
         isLoading
           ? <div className='loading'>
