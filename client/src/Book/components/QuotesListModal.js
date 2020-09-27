@@ -17,9 +17,14 @@ export default function QuotesListModal({ quotes, bookName, modalOpen, setModalO
         <h1>"{bookName}" quotes</h1>
         <button onClick={closeModal} className='modal__close-button'>X</button>
       </div>
-      <div className='quotes'>
+      <div className='quotes-list'>
         {
-          quotes.map((quote, index) => <p key={index}>* {quote}</p>)
+          quotes.map(({ quote, page }, index) => (
+            <div key={index} className='quote'>
+              <p>"{quote}"</p>
+              <p>Page {page}</p>
+            </div>
+          ))
         }
       </div>
     </Modal>
