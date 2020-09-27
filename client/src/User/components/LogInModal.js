@@ -18,7 +18,8 @@ export default function LogIn({ modalOpen, setModalOpen, setUser }) {
   }
 
   const _logInUser = async e => {
-    e.preventDefault();
+    e.preventDefault()
+    closeModal()
     const response = await logInUser({ ...userInfo })
     setUser(response.data.user)
   }

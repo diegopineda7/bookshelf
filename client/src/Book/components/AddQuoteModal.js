@@ -10,7 +10,7 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, loadBoo
   const handleChange = e => setQuote(e.target.value)
 
   const _saveQuote = async e => {
-    e.preventDefault();
+    e.preventDefault()
     closeModal()
     await saveQuote({ bookId, quote })
     await loadBooks()

@@ -21,7 +21,8 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
   }
 
   const _signUpUser = async e => {
-    e.preventDefault();
+    e.preventDefault()
+    closeModal()
     const response = await signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
     setUser(response.data.newUser)
   }
