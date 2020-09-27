@@ -7,11 +7,11 @@ import QuotesListModal from './QuotesListModal'
 Modal.setAppElement('#root')
 
 export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks }) {
+  const { _id, name, author, lastPageRead, quotes, pdfUrl } = book
   const [modalAddQuoteOpen, setModalAddQuoteOpen] = useState(false)
   const [modalQuotesOpen, setModalQuotesOpen] = useState(false)
   const [numPages, setNumPages] = useState(null)
-  const [pageNumber, setPageNumber] = useState(1)
-  const { _id, name, author, quotes, pdfUrl } = book
+  const [pageNumber, setPageNumber] = useState(lastPageRead > 0 ? lastPageRead : 1)
 
   const closeModal = () => setModalOpen(false)
 
@@ -44,9 +44,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
           options={{ workerSrc: 'pdf.worker.js' }}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page
-            pageNumber={pageNumber}
-          />
+          <Page pageNumber={pageNumber} />
         </Document>
         <div className='book__controls'>
           <p>
