@@ -80,6 +80,8 @@ body {
   padding: 20px 0;
   background-color: #fff;
   border-radius: 25px;
+  max-height: 85%;
+  overflow-y: scroll;
 }
 
 .modal__header {
