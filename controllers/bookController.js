@@ -48,15 +48,7 @@ const saveQuote = async (req, res) => {
   }
 }
 
-const getQuotes = async (req, res) => {
-  const { bookId } = req.body
-
-  const book = await Product.findById(bookId).lean().exec()
-  res.status(200).send({ quotes: book.quotes })
-}
-
 module.exports = {
   saveBook,
-  saveQuote,
-  getQuotes
+  saveQuote
 }

@@ -21,3 +21,21 @@ export const saveBook = async bookInfo => {
     console.error(e)
   }
 }
+
+export const saveQuote = async quoteInfo => {
+  const quoteData = new FormData()
+  quoteData.append('bookId', quoteInfo.bookId)
+  quoteData.append('quote', quoteInfo.quote)
+
+  try {
+    const response = await axios({
+      url: `${baseUrl}/book/quote`,
+      method: 'POST',
+      data: quoteData
+    })
+
+    return response
+  } catch (e) {
+    console.error(e)
+  }
+}
