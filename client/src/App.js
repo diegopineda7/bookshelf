@@ -19,19 +19,25 @@ function App() {
     <div className='App'>
       {
         !user.email
-          ? <div className='App'>
-            <button
-              onClick={() => setModalSignUpOpen(true)}
-              className='home__button'
-            >
-              SIGN UP
-            </button>
-            <button
-              onClick={() => setModalLogInOpen(true)}
-              className='home__button'
-            >
-              LOG IN
-            </button>
+          ? <div className='app__home'>
+            <div className='app__welcome'>
+              <h1 className='app__name'>Welcome to Bookshelf</h1>
+              <h2>Read your PDF books and save their best quotes</h2>
+            </div>
+            <div className='app__buttons'>
+              <button
+                onClick={() => setModalSignUpOpen(true)}
+                className='home__button'
+              >
+                SIGN UP
+              </button>
+              <button
+                onClick={() => setModalLogInOpen(true)}
+                className='home__button'
+              >
+                LOG IN
+              </button>
+            </div>
             <SignUpModal
               modalOpen={modalSignUpOpen}
               setModalOpen={setModalSignUpOpen}
@@ -44,6 +50,7 @@ function App() {
               setUser={setUser}
               showError={showError}
             />
+
           </div>
           : <Bookshelf
             userEmail={user.email}

@@ -37,7 +37,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
       <AddQuoteModal
         bookId={_id}
         modalOpen={modalAddQuoteOpen}
-        setModalOpen={setModalQuoteOpen}
+        setModalOpen={setModalAddQuoteOpen}
         loadBooks={loadBooks}
       />
     </Modal>

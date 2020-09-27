@@ -23,7 +23,8 @@ export default function Bookshelf({ userEmail, logOut }) {
   return (
     <div className='bookshelf'>
       <h1>Bookshelf</h1>
-      <button onClick={logOut}
+      <button
+        onClick={logOut}
         className='bookshelf__button'
       >
         LOG OUT
