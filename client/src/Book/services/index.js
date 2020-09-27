@@ -26,6 +26,7 @@ export const saveQuote = async quoteInfo => {
   const quoteData = new FormData()
   quoteData.append('bookId', quoteInfo.bookId)
   quoteData.append('quote', quoteInfo.quote)
+  quoteData.append('page', quoteInfo.page)
 
   try {
     const response = await axios({

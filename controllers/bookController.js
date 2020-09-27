@@ -31,12 +31,13 @@ const saveQuote = async (req, res) => {
   try {
     const {
       bookId,
-      quote
+      quote,
+      page
     } = req.body
 
     const bookUpdated = await Book.findByIdAndUpdate(bookId, {
       $push: {
-        quotes: quote
+        quotes: { quote, page }
       }
     }, {
       new: true

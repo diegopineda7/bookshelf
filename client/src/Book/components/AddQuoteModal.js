@@ -4,17 +4,24 @@ import { saveQuote } from '../services'
 
 Modal.setAppElement('#root')
 
-export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, loadBooks }) {
-  const [quote, setQuote] = useState('')
+export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, currentPage, loadBooks }) {
+  const [quoteInfo, setQuoteInfo] = useState({
+    bookId,
+    quote: '',
+    page: currentPage
+  })
 
   const closeModal = () => setModalOpen(false)
 
-  const handleChange = e => setQuote(e.target.value)
+  const handleChange = e => {
+    const { name, value } = e.target
+    setQuoteInfo({ ...quoteInfo, [name]: value })
+  }
 
   const _saveQuote = async e => {
     e.preventDefault()
     closeModal()
-    await saveQuote({ bookId, quote })
+    await saveQuote({ ...quoteInfo })
     await loadBooks()
   }
 
@@ -34,7 +41,19 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, loadBoo
           <label className='form__label'>Quote *</label>
           <input
             type='text'
-            value={quote}
+            name='quote'
+            value={quoteInfo.quote}
+            onChange={handleChange}
+            className='form__input'
+            required
+          />
+        </div>
+        <div className='form__item'>
+          <label className='form__label'>Page *</label>
+          <input
+            type='number'
+            name='page'
+            value={quoteInfo.page}
             onChange={handleChange}
             className='form__input'
             required
