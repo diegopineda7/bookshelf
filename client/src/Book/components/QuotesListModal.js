@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 
 Modal.setAppElement('#root')
 
-export default function QuotesListModal({ quotes, bookName, modalOpen, setModalOpen }) {
+export default function QuotesListModal({ quotes, bookName, modalOpen, setModalOpen, setPageNumber }) {
   const closeModal = () => setModalOpen(false)
 
   return (
@@ -20,7 +20,7 @@ export default function QuotesListModal({ quotes, bookName, modalOpen, setModalO
       <div className='quotes-list'>
         {
           quotes.map(({ quote, page }, index) => (
-            <div key={index} className='quote'>
+            <div key={index} onClick={() => setPageNumber(page)} className='quote'>
               <p>"{quote}"</p>
               <p>Page {page}</p>
             </div>

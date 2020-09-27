@@ -72,6 +72,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
         quotes={quotes}
         modalOpen={modalQuotesOpen}
         setModalOpen={setModalQuotesOpen}
+        setPageNumber={setPageNumber}
       />
       <AddQuoteModal
         bookId={_id}
