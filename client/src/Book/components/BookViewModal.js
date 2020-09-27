@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { Document, Page } from 'react-pdf'
 import AddQuoteModal from './AddQuoteModal'
-import QuotesListModal from './QuotesListModal'
+import QuotesList from './QuotesList'
 
 Modal.setAppElement('#root')
 
@@ -46,14 +46,13 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
         >
           <Page pageNumber={pageNumber} />
         </Document>
-        <div className='book__controls'>
-          <p>
-            Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-          </p>
+        <div className='pdf__controls'>
+          <p>Page {pageNumber} / {numPages}</p>
           <button
             type='button'
             disabled={pageNumber <= 1}
             onClick={previousPage}
+            className='pdf__button'
           >
             Previous
         </button>
@@ -61,17 +60,15 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
             type='button'
             disabled={pageNumber >= numPages}
             onClick={nextPage}
+            className='pdf__button'
           >
             Next
         </button>
         </div>
       </div>
       <button onClick={() => setModalAddQuoteOpen(true)}>Add quote</button>
-      <QuotesListModal
-        bookName={name}
+      <QuotesList
         quotes={quotes}
-        modalOpen={modalQuotesOpen}
-        setModalOpen={setModalQuotesOpen}
         setPageNumber={setPageNumber}
       />
       <AddQuoteModal

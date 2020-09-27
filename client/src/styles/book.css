@@ -39,3 +39,9 @@
   padding: 10px;
   width: fit-content;
 }
+
+.pdf__controls {
+  background-color: green;
+  position: fixed;
+  bottom: 0;
+}
