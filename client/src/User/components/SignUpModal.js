@@ -91,9 +91,7 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
         <div className='form__item'>
           <button type='submit' className='form__button'>
             Sign Up
-            {
-              isLoading && <Loading />
-            }
+            {isLoading && <Loading />}
           </button>
         </div>
       </form>

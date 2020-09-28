@@ -2,11 +2,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
 import Modal from 'react-modal'
+import Loading from '../../Loading'
 import { saveBook } from '../services'
 
 Modal.setAppElement('#root')
 
 export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadBooks }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [bookInfo, setBookInfo] = useState({
     userEmail,
     name: '',
@@ -75,7 +77,10 @@ export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadB
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>Add book</button>
+          <button type='submit' className='form__button'>
+            Add book
+            {isLoading && <Loading />}
+          </button>
         </div>
       </form>
     </Modal>

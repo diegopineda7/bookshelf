@@ -2,11 +2,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
+import Loading from '../../Loading'
 import { logInUser } from '../services'
 
 Modal.setAppElement('#root')
 
 export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [userInfo, setUserInfo] = useState({
     email: 'pineda.diego798@gmail.com',
     password: 'diego7'
@@ -20,12 +22,14 @@ export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
   }
 
   const _logInUser = async e => {
+    setIsLoading(true)
     e.preventDefault()
-    closeModal()
     const response = await logInUser({ ...userInfo })
-    if (response !== undefined && response.status === 200)
+    if (response !== undefined && response.status === 200) {
       setUser(response.data.user)
-    else showError()
+      closeModal()
+    } else showError()
+    setIsLoading(false)
   }
 
   return (
@@ -65,7 +69,10 @@ export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>Log In</button>
+          <button type='submit' className='form__button'>
+            Log In
+             {isLoading && <Loading />}
+          </button>
         </div>
       </form>
     </Modal>

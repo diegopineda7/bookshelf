@@ -2,11 +2,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
+import Loading from '../../Loading'
 import { saveQuote } from '../services'
 
 Modal.setAppElement('#root')
 
 export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, currentPage, loadBooks, setBook }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [quoteInfo, setQuoteInfo] = useState({
     bookId,
     quote: '',
@@ -28,10 +30,12 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
   }
 
   const _saveQuote = async e => {
+    setIsLoading(true)
     e.preventDefault()
     closeModal()
     const response = await saveQuote({ ...quoteInfo })
     setBook(response.data.bookUpdated)
+    setIsLoading(false)
     await loadBooks()
   }
 
@@ -72,7 +76,10 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>Save quote</button>
+          <button type='submit' className='form__button'>
+            Save quote
+            {isLoading && <Loading />}
+          </button>
         </div>
       </form>
     </Modal>
