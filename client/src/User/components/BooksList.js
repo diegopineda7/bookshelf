@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import BookViewModal from '../../Book/components/BookViewModal'
+import { setLastPageRead } from '../../Book/services'
 
 export default function BooksList({ books, loadBooks }) {
   const [modalBookOpen, setModalBookOpen] = useState(false)
@@ -10,11 +11,16 @@ export default function BooksList({ books, loadBooks }) {
     setModalBookOpen(true)
   }
 
+  const _setLastPageRead = async (bookId, page) => {
+    await setLastPageRead({ bookId, page })
+    loadBooks()
+  }
+
   return (
     <div className='books-list'>
       {
         books.map(book => {
-          const { _id, name, author, lastPageRead, quotes } = book
+          const { _id, name, author, lastPageRead } = book
           return (
             <div className='book' key={_id}>
               <div className='book__intro'>
@@ -22,7 +28,6 @@ export default function BooksList({ books, loadBooks }) {
                 <div className='book__info'>
                   <h3>Author: {author}</h3>
                   <h3>Last page read: {lastPageRead}</h3>
-                  <h3>Quotes saved: {quotes.length}</h3>
                 </div>
               </div>
               <h1 className='book__name'>{name}</h1>
@@ -36,6 +41,7 @@ export default function BooksList({ books, loadBooks }) {
         modalOpen={modalBookOpen}
         setModalOpen={setModalBookOpen}
         loadBooks={loadBooks}
+        setLastPageRead={_setLastPageRead}
       />
     </div>
   )

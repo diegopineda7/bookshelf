@@ -75,12 +75,12 @@ body {
 
 .modal__content {
   position: absolute;
-  width: 75%;
-  height: fit-content;
+  min-width: 45%;
+  max-width: 95%;
   padding: 20px 0;
   background-color: #fff;
   border-radius: 25px;
-  max-height: 95%;
+  max-height: 90%;
   overflow-y: scroll;
 }
 

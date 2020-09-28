@@ -34,14 +34,38 @@
   border-radius: 15px;
 }
 
+.book__content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 15px;
+}
+
 .book__pdf {
-  background-color: red;
-  padding: 10px;
+  margin-left: 10px;
+  border: 2px solid black;
   width: fit-content;
 }
 
 .pdf__controls {
-  background-color: green;
   position: fixed;
-  bottom: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 250px;
+  bottom: 25px;
+  left: 50%;
+  margin-left: -125px;
+  background-color: #fff;
+-webkit-box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
+}
+
+.pdf__page {
+  margin-right: 15px;
+}
+
+.book__quotes-section {
+  background-color: blue;
 }

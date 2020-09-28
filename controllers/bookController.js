@@ -49,7 +49,27 @@ const saveQuote = async (req, res) => {
   }
 }
 
+const setLastPageRead = async (req, res) => {
+  try {
+    const {
+      bookId,
+      page
+    } = req.body
+
+    const bookUpdated = await Book.findByIdAndUpdate(bookId, {
+      lastPageRead: page
+    }, {
+      new: true
+    }).lean().exec()
+
+    res.status(201).send({ bookUpdated })
+  } catch (e) {
+    res.status(500).send({ error: e.message })
+  }
+}
+
 module.exports = {
   saveBook,
-  saveQuote
+  saveQuote,
+  setLastPageRead
 }

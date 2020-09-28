@@ -40,3 +40,20 @@ export const saveQuote = async quoteInfo => {
     console.error(e)
   }
 }
+export const setLastPageRead = async bookInfo => {
+  const bookData = new FormData()
+  bookData.append('bookId', bookInfo.bookId)
+  bookData.append('page', bookInfo.page)
+
+  try {
+    const response = await axios({
+      url: `${baseUrl}/book/lastpageread`,
+      method: 'POST',
+      data: bookData
+    })
+
+    return response
+  } catch (e) {
+    console.error(e)
+  }
+}

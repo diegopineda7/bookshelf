@@ -4,7 +4,8 @@ const connectDB = async ({ user, password, name }) => {
   const uri = `mongodb+srv://${user}:${password}@cluster0.jwttz.mongodb.net/${name}?retryWrites=true&w=majority`
   await mongoose.connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
 }
 
