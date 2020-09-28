@@ -7,7 +7,7 @@ import { signUpUser } from '../services';
 
 Modal.setAppElement('#root')
 
-export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
+export default function SignUpModal({ modalOpen, setModalOpen, setUser, showError }) {
   const [isLoading, setIsLoading] = useState(false)
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -28,9 +28,14 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
     setIsLoading(true)
     e.preventDefault()
     const response = await signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
-    setUser(response.data.newUser)
-    setIsLoading(false)
-    closeModal()
+    if (response !== undefined && response.status === 200) {
+      setUser(response.data.newUser)
+      setIsLoading(false)
+      closeModal()
+    } else {
+      setIsLoading(false)
+      showError()
+    }
   }
 
   return (

@@ -27,9 +27,12 @@ export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
     const response = await logInUser({ ...userInfo })
     if (response !== undefined && response.status === 200) {
       setUser(response.data.user)
+      setIsLoading(false)
       closeModal()
-    } else showError()
-    setIsLoading(false)
+    } else {
+      setIsLoading(false)
+      showError()
+    }
   }
 
   return (

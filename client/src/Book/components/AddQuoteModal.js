@@ -32,10 +32,10 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
   const _saveQuote = async e => {
     setIsLoading(true)
     e.preventDefault()
-    closeModal()
     const response = await saveQuote({ ...quoteInfo })
     setBook(response.data.bookUpdated)
     setIsLoading(false)
+    closeModal()
     await loadBooks()
   }
 

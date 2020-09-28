@@ -25,10 +25,12 @@ export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadB
   }
 
   const _saveBook = async e => {
+    setIsLoading(true)
     e.preventDefault()
-    closeModal()
     await saveBook({ ...bookInfo, pdf: inputFileRef.current.files[0] })
     await loadBooks()
+    setIsLoading(false)
+    closeModal()
   }
 
   return (

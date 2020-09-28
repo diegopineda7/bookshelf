@@ -12,8 +12,8 @@ export default function QuotesList({ quotes, setPageNumber }) {
           : quotes.map(({ quote, page }, index) => (
             <div
               onClick={() => setPageNumber(page)}
-              className='quote'
               key={index}
+              className='quote'
             >
               <Tippy
                 content={`Go to page ${page}`}
