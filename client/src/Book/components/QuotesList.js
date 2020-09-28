@@ -1,4 +1,6 @@
+import Tippy from '@tippyjs/react'
 import React from 'react'
+import 'tippy.js/dist/tippy.css'
 
 export default function QuotesList({ quotes, setPageNumber }) {
   return (
@@ -8,9 +10,17 @@ export default function QuotesList({ quotes, setPageNumber }) {
         !quotes.length
           ? <p>No quotes saved</p>
           : quotes.map(({ quote, page }, index) => (
-            <div key={index} onClick={() => setPageNumber(page)} className='quote'>
-              <p>"{quote}"</p>
-              <p>Page {page}</p>
+            <div
+              onClick={() => setPageNumber(page)}
+              className='quote'
+              key={index}
+            >
+              <Tippy
+                content={`Go to page ${page}`}
+                placement='left'
+              >
+                <p>"{quote}" - Page {page}</p>
+              </Tippy>
             </div>
           ))
       }
