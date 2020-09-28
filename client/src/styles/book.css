@@ -41,6 +41,19 @@
   gap: 15px;
 }
 
+.pdf__button {
+  border: none;
+  background-color: transparent;
+  padding: 15px;
+  font-size: 15px;
+  transition: all .5s;
+}
+
+.pdf__button:hover {
+  padding: 0 20px;
+  font-size: 18px;
+}
+
 .book__pdf {
   margin-left: 10px;
   border: 2px solid black;
@@ -59,15 +72,11 @@
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 67px -13px rgba(0,0,0,0.75);
 }
 
 .pdf__page {
   margin-right: 15px;
-}
-
-.book__quotes-section {
-  /* border: 2px solid black; */
 }
 
 .quote {

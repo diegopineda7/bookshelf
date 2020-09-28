@@ -1,3 +1,5 @@
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { Document, Page } from 'react-pdf'
@@ -62,7 +64,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
               onClick={previousPage}
               className='pdf__button'
             >
-              Previous
+              <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             <button
               type='button'
@@ -70,7 +72,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
               onClick={nextPage}
               className='pdf__button'
             >
-              Next
+              <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
         </div>
