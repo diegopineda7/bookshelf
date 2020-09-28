@@ -2,11 +2,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
+import Loading from '../../Loading';
 import { signUpUser } from '../services';
 
 Modal.setAppElement('#root')
 
 export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -23,10 +25,12 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
   }
 
   const _signUpUser = async e => {
+    setIsLoading(true)
     e.preventDefault()
-    closeModal()
     const response = await signUpUser({ ...userInfo, photo: inputFileRef.current.files[0] })
     setUser(response.data.newUser)
+    setIsLoading(false)
+    closeModal()
   }
 
   return (
@@ -85,7 +89,12 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>Sign Up</button>
+          <button type='submit' className='form__button'>
+            Sign Up
+            {
+              isLoading && <Loading />
+            }
+          </button>
         </div>
       </form>
     </Modal>
