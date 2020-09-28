@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import { saveQuote } from '../services'
 
@@ -11,7 +11,14 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
     page: currentPage
   })
 
-  const closeModal = () => setModalOpen(false)
+  useEffect(() => {
+    setQuoteInfo({ ...quoteInfo, page: currentPage })
+  }, [currentPage])
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setQuoteInfo({ ...quoteInfo, page: currentPage })
+  }
 
   const handleChange = e => {
     const { name, value } = e.target

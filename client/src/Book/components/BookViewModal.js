@@ -81,13 +81,16 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
           />
         </div>
       </div>
-      <AddQuoteModal
-        bookId={_id}
-        modalOpen={modalAddQuoteOpen}
-        setModalOpen={setModalAddQuoteOpen}
-        currentPage={pageNumber}
-        loadBooks={loadBooks}
-      />
+      {
+        pageNumber &&
+        <AddQuoteModal
+          bookId={_id}
+          modalOpen={modalAddQuoteOpen}
+          setModalOpen={setModalAddQuoteOpen}
+          currentPage={pageNumber}
+          loadBooks={loadBooks}
+        />
+      }
     </Modal>
   )
 }
