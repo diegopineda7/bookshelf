@@ -1,3 +1,5 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { logInUser } from '../services'
@@ -35,7 +37,9 @@ export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
     >
       <div className='modal__header'>
         <h1>Log In form</h1>
-        <button onClick={closeModal} className='modal__close-button'>X</button>
+        <button onClick={closeModal} className='modal__close-button'>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
       </div>
       <form onSubmit={_logInUser} className='modal__form'>
         <div className='form__item'>

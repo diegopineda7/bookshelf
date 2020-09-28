@@ -19,7 +19,6 @@ button {
   cursor: pointer;
 }
 
-
 /* ================ HOME ================ */
 
 .App {
@@ -85,6 +84,9 @@ button {
   background-color: #fff;
   border-radius: 25px;
   max-height: 90%;
+}
+
+.modal__content--pdf {
   overflow-y: scroll;
 }
 
@@ -106,11 +108,16 @@ button {
 
 .modal__close-button {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 25px;
   width: 30px;
   height: 30px;
-  border: none;
+  border: 2px solid black;
+  background-color: transparent;
   border-radius: 25px;
+  font-size: 15px;
 }
 
 /* ================ FORM ================ */

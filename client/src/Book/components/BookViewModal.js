@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
@@ -37,12 +37,14 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
       isOpen={modalOpen}
       onRequestClose={closeModal}
       overlayClassName='modal__overlay'
-      className='modal__content'
+      className='modal__content modal__content--pdf'
     >
       <div className='modal__header'>
         <h1>{name}</h1>
         <h3>{author}</h3>
-        <button onClick={closeModal} className='modal__close-button'>X</button>
+        <button onClick={closeModal} className='modal__close-button'>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
       </div>
       <div className='book__content'>
         <div className='book__pdf'>

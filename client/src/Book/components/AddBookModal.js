@@ -1,3 +1,5 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
 import Modal from 'react-modal'
 import { saveBook } from '../services'
@@ -36,7 +38,9 @@ export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadB
     >
       <div className='modal__header'>
         <h1>Add a new book</h1>
-        <button onClick={closeModal} className='modal__close-button'>X</button>
+        <button onClick={closeModal} className='modal__close-button'>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
       </div>
       <form onSubmit={_saveBook} className='modal__form'>
         <div className='form__item'>

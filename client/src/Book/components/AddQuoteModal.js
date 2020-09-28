@@ -1,3 +1,5 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import { saveQuote } from '../services'
@@ -42,7 +44,9 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
     >
       <div className='modal__header'>
         <h1>Add a new quote in this book</h1>
-        <button onClick={closeModal} className='modal__close-button'>X</button>
+        <button onClick={closeModal} className='modal__close-button'>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
       </div>
       <form onSubmit={_saveQuote} className='modal__form'>
         <div className='form__item'>

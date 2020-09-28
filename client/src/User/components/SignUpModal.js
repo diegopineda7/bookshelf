@@ -1,3 +1,5 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { signUpUser } from '../services';
@@ -36,7 +38,9 @@ export default function SignUpModal({ modalOpen, setModalOpen, setUser }) {
     >
       <div className='modal__header'>
         <h1>Sign Up form</h1>
-        <button onClick={closeModal} className='modal__close-button'>X</button>
+        <button onClick={closeModal} className='modal__close-button'>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
       </div>
       <form onSubmit={_signUpUser} className='modal__form'>
         <div className='form__item'>
