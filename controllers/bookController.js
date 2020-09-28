@@ -37,7 +37,7 @@ const saveQuote = async (req, res) => {
 
     const bookUpdated = await Book.findByIdAndUpdate(bookId, {
       $push: {
-        quotes: { quote, page }
+        quotes: { quote, page: parseInt(page) }
       }
     }, {
       new: true

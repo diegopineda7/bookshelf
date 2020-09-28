@@ -20,9 +20,9 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
     setQuoteInfo({ ...quoteInfo, page: currentPage })
   }
 
-  const handleChange = e => {
+  const handleChange = async e => {
     const { name, value } = e.target
-    setQuoteInfo({ ...quoteInfo, [name]: value })
+    await setQuoteInfo({ ...quoteInfo, [name]: value })
   }
 
   const _saveQuote = async e => {
