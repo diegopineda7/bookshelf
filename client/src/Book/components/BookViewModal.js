@@ -3,14 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { Document, Page } from 'react-pdf'
-import AddQuoteModal from './AddQuoteModal'
+import AddQuoteForm from './AddQuoteForm'
 import QuotesList from './QuotesList'
 
 Modal.setAppElement('#root')
 
 export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks, setLastPageRead }) {
   const [bookOpen, setBookOpen] = useState(book)
-  const [modalAddQuoteOpen, setModalAddQuoteOpen] = useState(false)
   const [numPages, setNumPages] = useState(null)
   const [pageNumber, setPageNumber] = useState(null)
   const { _id, name, author, lastPageRead, quotes, pdfUrl } = bookOpen
@@ -79,24 +78,21 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
           </div>
         </div>
         <div className='book__quotes-section'>
-          <button onClick={() => setModalAddQuoteOpen(true)}>Add quote</button>
+          {
+            pageNumber &&
+            <AddQuoteForm
+              bookId={_id}
+              currentPage={pageNumber}
+              loadBooks={loadBooks}
+              setBook={setBookOpen}
+            />
+          }
           <QuotesList
             quotes={quotes}
             setPageNumber={setPageNumber}
           />
         </div>
       </div>
-      {
-        pageNumber &&
-        <AddQuoteModal
-          bookId={_id}
-          modalOpen={modalAddQuoteOpen}
-          setModalOpen={setModalAddQuoteOpen}
-          currentPage={pageNumber}
-          loadBooks={loadBooks}
-          setBook={setBookOpen}
-        />
-      }
     </Modal>
   )
 }

@@ -79,7 +79,11 @@ export default function AddBookModal({ modalOpen, setModalOpen, userEmail, loadB
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>
+          <button
+            type='submit'
+            disabled={isLoading}
+            className='form__button'
+          >
             Add book
             {isLoading && <Loading />}
           </button>

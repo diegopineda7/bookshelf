@@ -72,9 +72,13 @@ export default function LogIn({ modalOpen, setModalOpen, setUser, showError }) {
           />
         </div>
         <div className='form__item'>
-          <button type='submit' className='form__button'>
+          <button
+            type='submit'
+            disabled={isLoading}
+            className='form__button'
+          >
             Log In
-             {isLoading && <Loading />}
+            {isLoading && <Loading />}
           </button>
         </div>
       </form>
