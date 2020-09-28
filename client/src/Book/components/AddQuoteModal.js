@@ -4,7 +4,7 @@ import { saveQuote } from '../services'
 
 Modal.setAppElement('#root')
 
-export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, currentPage, loadBooks }) {
+export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, currentPage, loadBooks, setBook }) {
   const [quoteInfo, setQuoteInfo] = useState({
     bookId,
     quote: '',
@@ -28,7 +28,8 @@ export default function AddQuoteModal({ modalOpen, setModalOpen, bookId, current
   const _saveQuote = async e => {
     e.preventDefault()
     closeModal()
-    await saveQuote({ ...quoteInfo })
+    const response = await saveQuote({ ...quoteInfo })
+    setBook(response.data.bookUpdated)
     await loadBooks()
   }
 

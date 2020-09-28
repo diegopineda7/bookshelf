@@ -7,10 +7,11 @@ import QuotesList from './QuotesList'
 Modal.setAppElement('#root')
 
 export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks, setLastPageRead }) {
-  const { _id, name, author, lastPageRead, quotes, pdfUrl } = book
+  const [bookOpen, setBookOpen] = useState(book)
   const [modalAddQuoteOpen, setModalAddQuoteOpen] = useState(false)
   const [numPages, setNumPages] = useState(null)
   const [pageNumber, setPageNumber] = useState(null)
+  const { _id, name, author, lastPageRead, quotes, pdfUrl } = bookOpen
 
   const closeModal = () => {
     setModalOpen(false)
@@ -89,6 +90,7 @@ export default function BookViewModal({ book, modalOpen, setModalOpen, loadBooks
           setModalOpen={setModalAddQuoteOpen}
           currentPage={pageNumber}
           loadBooks={loadBooks}
+          setBook={setBookOpen}
         />
       }
     </Modal>

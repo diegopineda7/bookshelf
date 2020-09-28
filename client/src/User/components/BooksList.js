@@ -36,13 +36,16 @@ export default function BooksList({ books, loadBooks }) {
           )
         })
       }
-      <BookViewModal
-        book={bookOpen}
-        modalOpen={modalBookOpen}
-        setModalOpen={setModalBookOpen}
-        loadBooks={loadBooks}
-        setLastPageRead={_setLastPageRead}
-      />
+      {
+        bookOpen.name &&
+        <BookViewModal
+          book={bookOpen}
+          modalOpen={modalBookOpen}
+          setModalOpen={setModalBookOpen}
+          loadBooks={loadBooks}
+          setLastPageRead={_setLastPageRead}
+        />
+      }
     </div>
   )
 }
